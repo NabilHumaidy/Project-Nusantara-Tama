@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import { useReactTable, flexRender } from '@tanstack/react-table';
 import axios from 'axios';
 import { useQuery } from 'react-query';
-import Table from './Table';
+import TableTestimonies from './TableTestimonies';
 
 export default function TestimoniesPage({ auth }) {
     return(
@@ -22,7 +22,7 @@ export default function TestimoniesPage({ auth }) {
             breadcrumb='Testimonies'
             title='Testimonies'>
                 <div className='w-full border border-dashed rounded-xl bg-white p-4'>
-                    <Table />
+                    <TableTestimonies />
                 </div>
             </DashboardLayout>
         </>

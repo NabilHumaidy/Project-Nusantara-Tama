@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { useReactTable, flexRender } from '@tanstack/react-table';
 import axios from 'axios';
 import { useQuery } from 'react-query';
+import TableClients from './TableClients';
 
 export default function ClientsPage({ auth }) {
     return(
@@ -21,7 +22,7 @@ export default function ClientsPage({ auth }) {
             breadcrumb='Clients'
             title='Clients'>
                 <div className='w-full border border-dashed rounded-xl bg-white p-4'>
-                    
+                    <TableClients />
                 </div>
             </DashboardLayout>
         </>

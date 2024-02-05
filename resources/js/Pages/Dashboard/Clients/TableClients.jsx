@@ -11,10 +11,10 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { FaUser, FaCheckCircle } from "react-icons/fa";
 import { IoMdClose, IoMdStar } from "react-icons/io";
 import { MdOutlineEdit, MdOutlineDeleteOutline } from "react-icons/md";
-import EditTestimonies from './EditTestimonies';
-import DeleteTestimonies from './DeleteTestimonies';
+import EditClients from './EditClients';
+import DeleteClients from './DeleteClients';
 
-export default function Table() {
+export default function TableClients() {
     const [ search, setSearch] = useState();
     const [debouncedSearch, setDebouncedSearch] = useState('');
     const [ dataPerPage, setDataPerPage] = useState('5');
@@ -213,10 +213,8 @@ export default function Table() {
                 <TableHeader>
                     <TableColumn>ID</TableColumn>
                     <TableColumn>NAME</TableColumn>
-                    <TableColumn>JOB TITLE</TableColumn>
-                    <TableColumn>PHOTO</TableColumn>
-                    <TableColumn>MESSAGE</TableColumn>
-                    <TableColumn>RATING</TableColumn>
+                    <TableColumn>IMAGE</TableColumn>
+                    <TableColumn>LINK</TableColumn>
                     <TableColumn>CREATED AT</TableColumn>
                     <TableColumn>ACTION</TableColumn>
                 </TableHeader>
@@ -226,12 +224,10 @@ export default function Table() {
                             <TableRow key={i} className='hover:bg-default-100 transition'>
                                 <TableCell>{row.id}</TableCell>
                                 <TableCell>{row.name}</TableCell>
-                                <TableCell>{row.jobtitle}</TableCell>
-                                <TableCell><Avatar src={row.photo} size="md" /></TableCell>
-                                <TableCell className='text-xs'>{row.message}</TableCell>
-                                <TableCell className='flex'>{convertToRating(row.rating)}</TableCell>
+                                <TableCell>{row.image}</TableCell>
+                                <TableCell>{row.link}</TableCell>
                                 <TableCell>{formatTime(row.created_at)}</TableCell>
-                                <TableCell className='flex gap-1'><EditTestimonies dataId={row.id} dataName={row.name} dataJobtitle={row.jobtitle} dataPhoto={row.photo} dataRating={row.rating} dataMessage={row.message} setResponse={setResponseEdit} response={responseEdit}/> <DeleteTestimonies dataId={row.id} dataName={row.name} setResponse={setResponseDelete} response={responseDelete}/></TableCell>
+                                <TableCell className='flex gap-1'><EditClients dataId={row.id} dataName={row.name} dataJobtitle={row.jobtitle} dataPhoto={row.photo} dataRating={row.rating} dataMessage={row.message} setResponse={setResponseEdit} response={responseEdit}/> <DeleteClients dataId={row.id} dataName={row.name} setResponse={setResponseDelete} response={responseDelete}/></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -256,7 +252,7 @@ export default function Table() {
                             <div>
                                 
                             <div className='flex gap-1'>
-                                <EditTestimonies dataId={row.id} dataName={row.name} dataJobtitle={row.jobtitle} dataPhoto={row.photo} dataRating={row.rating} dataMessage={row.message} setResponse={setResponseEdit} response={responseEdit}/> <DeleteTestimonies dataId={row.id} dataName={row.name} setResponse={setResponseDelete} response={responseDelete}/>
+                                <EditClients dataId={row.id} dataName={row.name} dataJobtitle={row.jobtitle} dataPhoto={row.photo} dataRating={row.rating} dataMessage={row.message} setResponse={setResponseEdit} response={responseEdit}/> <DeleteClients dataId={row.id} dataName={row.name} setResponse={setResponseDelete} response={responseDelete}/>
                             </div>
                             </div>
                         </div>
@@ -297,7 +293,7 @@ export default function Table() {
                     <Button size='sm' onClick={() => setModalAddOpen(false)} isIconOnly radius='full' className='absolute top-1 right-1 bg-transparent text-foreground-500 hover:bg-default-100 active:bg-default-200 tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 select-none'>
                         <svg className='size-4' aria-hidden="true" fill="none" focusable="false" height="1em" role="presentation" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="1em"><path d="M18 6L6 18M6 6l12 12"></path></svg>
                     </Button>
-                    <ModalHeader className="flex flex-col gap-1"><p className='text-xl font-normal'>Create <span className='text-primary'>Testimony</span></p></ModalHeader>
+                    <ModalHeader className="flex flex-col gap-1"><p className='text-xl font-normal'>Create <span className='text-primary'>Client</span></p></ModalHeader>
                     <ModalBody className='sidebar'>
                         <div className='grid grid-cols-4 lg:grid-cols-5 gap-5'>
                             <div className='col-span-4 lg:col-span-1 flex flex-col items-center justify-center relative'>
