@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
@@ -37,12 +38,20 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $apiKey = Str::random(32);
+
+        // Check if the generated API key is unique
+        while (User::where('api_key', $apiKey)->exists()) {
+            $apiKey = Str::random(32);
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'api_key' => $apiKey,
         ]);
-
+        
         event(new Registered($user));
 
         Auth::login($user);
